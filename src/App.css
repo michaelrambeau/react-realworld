@@ -1,0 +1,13 @@
+#layout {
+  display: flex;
+}
+#sidebar {
+  min-width: 120px;
+}
+#main {
+  flex-grow: 1;
+  padding: 0 2rem;
+}
+#main h2 {
+  margin-top: 0;
+}
