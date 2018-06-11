@@ -1,15 +1,9 @@
-import React from 'react'
-import { waitForElement, wait, prettyDOM } from 'react-testing-library'
+import React from "react";
+import { waitForElement, wait, prettyDOM } from "react-testing-library";
 
-import render from './render-with-context'
-import App from '../App'
-import createApi from '../api/players-api'
+import renderApp from "./render-app";
 
-const dependencies = {
-  api: createApi()
-}
-
-it('Should render the homepage', () => {
-  const { getByText } = render(<App dependencies={dependencies} />)
-  const msg = getByText(/Welcome/i)
-})
+it("Should render the homepage", () => {
+  const { getByText } = renderApp({ route: "/" });
+  getByText(/Welcome/i);
+});

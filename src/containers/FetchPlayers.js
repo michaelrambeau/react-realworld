@@ -1,28 +1,27 @@
-import React from 'react'
+import React from "react";
 
 class FetchPlayers extends React.Component {
   state = {
     loading: true,
+    failed: false,
     players: []
-  }
+  };
   loadPlayers = async () => {
-    const { api } = this.props
-    const players = await api.findAll()
-    console.log('Found!')
-
-    this.setState({ players, loading: false })
-  }
+    const { api } = this.props;
+    try {
+      const players = await api.findAll();
+      this.setState({ players, loading: false, failed: false });
+    } catch (err) {
+      this.setState({ players: [], loading: false, failed: true });
+    }
+  };
   componentDidMount() {
-    console.log('Did mount')
-
-    this.loadPlayers()
+    this.loadPlayers();
   }
   render() {
-    const { loading, players } = this.state
-    console.log('Render!', loading)
-
-    return this.props.children({ loading, players })
+    const { loading, players, failed } = this.state;
+    return this.props.children({ loading, players, failed });
   }
 }
 
-export default FetchPlayers
+export default FetchPlayers;
