@@ -1,14 +1,14 @@
-import React, { Fragment } from 'react'
-import { Route } from 'react-router-dom'
+import React, { Fragment } from "react";
+import { Route } from "react-router-dom";
 
-import HomePage from './pages/HomePage'
-import PlayerListPage from './pages/PlayerListPage'
-import AddPlayerPage from './pages/AddPlayerPage'
-import EditPlayerPage from './pages/EditPlayerPage'
-import { withProps } from 'recompose'
+import HomePage from "./pages/HomePage";
+import PlayerListPage from "./pages/PlayerList/PlayerListContainer";
+import AddPlayerPage from "./pages/AddPlayerPage";
+import EditPlayerPage from "./pages/EditPlayer/EditPlayerContainer";
+import { withProps } from "recompose";
 
 const Routes = ({ dependencies }) => {
-  const enhance = withProps({ dependencies })
+  const enhance = withProps({ dependencies });
   return (
     <Fragment>
       <Route exact path="/" component={HomePage} />
@@ -16,7 +16,7 @@ const Routes = ({ dependencies }) => {
       <Route exact path="/add" component={enhance(AddPlayerPage)} />
       <Route exact path="/players/:id" component={enhance(EditPlayerPage)} />
     </Fragment>
-  )
-}
+  );
+};
 
-export default Routes
+export default Routes;

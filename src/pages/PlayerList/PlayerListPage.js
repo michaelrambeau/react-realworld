@@ -1,8 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
-import PlayerList from "../components/PlayerList";
-import Loading from "../components/Loading";
-import Alert from "../components/Alert";
+import PlayerList from "../../components/PlayerList";
+import Loading from "../../components/Loading";
+import Alert from "../../components/Alert";
 
 const PlayerListPage = props => {
   return (
@@ -19,6 +19,10 @@ const List = ({ loading, error, players }) => {
   return <PlayerList players={players} />;
 };
 
-PlayerListPage.propTypes = {};
+PlayerListPage.propTypes = {
+  player: PropTypes.object,
+  loading: PropTypes.boolean,
+  error: PropTypes.object
+};
 
 export default PlayerListPage;
