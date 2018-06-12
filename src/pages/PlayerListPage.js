@@ -10,9 +10,9 @@ const PlayerListPage = ({ dependencies }) => {
     <div>
       <h2>Player List</h2>
       <FetchPlayers api={api}>
-        {({ players, loading, failed }) => {
+        {({ players, loading, error }) => {
           if (loading) return <Loading />;
-          if (failed) return <Alert>Failed</Alert>;
+          if (error) return <Alert>{error.message}</Alert>;
           return <PlayerList players={players} />;
         }}
       </FetchPlayers>

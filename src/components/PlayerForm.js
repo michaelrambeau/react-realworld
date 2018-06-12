@@ -1,18 +1,20 @@
-import React from 'react'
+import React from "react";
+import Alert from "./Alert";
 
 const PlayerForm = ({
   isNewPlayer,
   values,
   handleSubmit,
   handleChange,
-  isSubmitting
+  isSubmitting,
+  errors
 }) => {
   return (
     <form className="form" onSubmit={handleSubmit}>
       <p>
         {isNewPlayer
-          ? 'This is the form to ADD a new player'
-          : 'This is the form to EDIT an existing player'}
+          ? "This is the form to ADD a new player"
+          : "This is the form to EDIT an existing player"}
       </p>
       <fieldset className="form-group">
         <label htmlFor="name">Name:</label>
@@ -36,6 +38,7 @@ const PlayerForm = ({
           className="form-control"
         />
       </fieldset>
+      {errors.general && <Alert>{errors.general}</Alert>}
       <button
         type="submit"
         className="btn btn-primary btn-block"
@@ -44,13 +47,13 @@ const PlayerForm = ({
         {isSubmitting ? (
           <span className="loading" />
         ) : isNewPlayer ? (
-          'Add'
+          "Add"
         ) : (
-          'Save'
+          "Save"
         )}
       </button>
     </form>
-  )
-}
+  );
+};
 
-export default PlayerForm
+export default PlayerForm;

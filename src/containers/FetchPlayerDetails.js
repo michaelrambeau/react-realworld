@@ -8,15 +8,15 @@ class FetchPlayerDetails extends React.Component {
   state = {
     loading: true,
     player: null,
-    failed: false
+    error: null
   };
   loadPlayer = async () => {
     const { id, api } = this.props;
     try {
       const player = await api.findById(id);
-      this.setState({ player, loading: false, failed: false });
+      this.setState({ player, loading: false, error: null });
     } catch (error) {
-      this.setState({ player: null, loading: false, failed: true });
+      this.setState({ player: null, loading: false, error });
     }
   };
   componentDidMount() {
@@ -28,8 +28,8 @@ class FetchPlayerDetails extends React.Component {
     }
   }
   render() {
-    const { loading, player } = this.state;
-    return this.props.children({ loading, player });
+    const { loading, player, error } = this.state;
+    return this.props.children({ loading, player, error });
   }
 }
 

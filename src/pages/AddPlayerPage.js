@@ -12,9 +12,13 @@ const intialValues = {
 
 const AddPlayerListPage = ({ dependencies, history }) => {
   const { api } = dependencies;
-  const onSubmit = async values => {
-    api.add(values);
-    await history.push("/players");
+  const onSubmit = async (values, { props, setSubmitting, setErrors }) => {
+    try {
+      await api.add(values);
+      history.push("/players");
+    } catch (error) {
+      setErrors({ general: error.message });
+    }
   };
   return (
     <div>

@@ -1,0 +1,17 @@
+[
+  {
+    "id": 1,
+    "name": "Michael Jordan",
+    "team": "Bulls"
+  },
+  {
+    "id": 2,
+    "name": "LeBron James",
+    "team": "Cavs"
+  },
+  {
+    "id": 3,
+    "name": "Stephen Curry",
+    "team": "Warriors"
+  }
+]

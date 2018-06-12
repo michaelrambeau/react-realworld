@@ -1,29 +1,12 @@
 /**
  * API mock
  */
-function randomDelay(value, delay) {
-  const lucky = Math.random() > 0.01;
-  const delayFn = lucky ? delaySuccess : delayError;
-  return delayFn(value, delay)
-}
-function delaySuccess(value, delay = 500) {
-  return new Promise(function(resolve) {
-    setTimeout(() => resolve(value), delay);
-  });
-}
-
-const delayError = (message, delay = 500) =>
-  new Promise((resolve, reject) => {
-    setTimeout(() => reject(new Error(message)), delay);
-  });
+import data from "./players.json";
+import { randomDelay, delayError } from "./utils";
 
 const createApi = ({ immediate = true } = {}) => {
   // it's the first time I use `let`, usually it's bad!
-  let players = [
-    { id: 1, name: "Michael Jordan", team: "Bulls" },
-    { id: 2, name: "LeBron James", team: "Cavs" },
-    { id: 3, name: "Stephen Curry", team: "Warriors" }
-  ];
+  let players = data.slice();
   const findById = id => {
     const number = parseInt(id, 10);
     return players.find(player => player.id === number);
