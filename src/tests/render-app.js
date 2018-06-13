@@ -4,6 +4,7 @@ import { IntlProvider } from "react-intl";
 import renderWithContext from "./render-with-context";
 import createApi from "../api/players-api";
 import App from "../App";
+import messages from "../i18n/en";
 
 export default function renderApp({ route }) {
   const api = createApi();
@@ -12,7 +13,7 @@ export default function renderApp({ route }) {
   };
   return {
     ...renderWithContext(
-      <IntlProvider locale="en">
+      <IntlProvider locale="en" messages={messages}>
         <App dependencies={dependencies} />
       </IntlProvider>,
       {
