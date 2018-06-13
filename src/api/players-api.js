@@ -2,7 +2,7 @@
  * API mock
  */
 import data from "./players.json";
-import { randomDelay, delayError } from "./utils";
+import { randomDelay /*delayError*/ } from "./utils";
 
 const createApi = ({ immediate = true } = {}) => {
   // it's the first time I use `let`, usually it's bad!

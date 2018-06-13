@@ -25,6 +25,10 @@ const EditPlayerContainer = ({ dependencies, history, match }) => {
   );
 };
 
-EditPlayerContainer.propTypes = {};
+EditPlayerContainer.propTypes = {
+  dependencies: PropTypes.object.isRequired,
+  history: PropTypes.object.isRequired,
+  match: PropTypes.object.isRequired
+};
 
 export default withRouter(EditPlayerContainer);

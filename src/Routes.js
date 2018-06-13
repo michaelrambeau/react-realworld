@@ -3,7 +3,7 @@ import { Route } from "react-router-dom";
 
 import HomePage from "./pages/HomePage";
 import PlayerListPage from "./pages/PlayerList/PlayerListContainer";
-import AddPlayerPage from "./pages/AddPlayerPage";
+import AddPlayerPage from "./pages/AddPlayer/AddPlayerContainer";
 import EditPlayerPage from "./pages/EditPlayer/EditPlayerContainer";
 import { withProps } from "recompose";
 
