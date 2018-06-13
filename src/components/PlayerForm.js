@@ -36,6 +36,7 @@ const PlayerForm = ({
           value={values.team}
           required
           className="form-control"
+          data-testid="label_name_field"
         />
       </fieldset>
       {errors.general && <Alert>{errors.general}</Alert>}

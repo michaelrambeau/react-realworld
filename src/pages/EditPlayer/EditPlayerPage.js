@@ -24,7 +24,7 @@ const EditPlayerPage = ({ player, loading, error, onSubmit }) => {
 
 EditPlayerPage.propTypes = {
   player: PropTypes.object,
-  loading: PropTypes.boolean,
+  loading: PropTypes.bool,
   error: PropTypes.object,
   onSubmit: PropTypes.func.isRequired
 };

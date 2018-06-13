@@ -1,14 +1,17 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React from "react";
+import PropTypes from "prop-types";
+import { FormattedMessage } from "react-intl";
 
 const Header = props => {
   return (
     <header>
-      <h1>Real World Demo</h1>
+      <h1>
+        <FormattedMessage id={"layout.header"} />
+      </h1>
     </header>
-  )
-}
+  );
+};
 
-Header.propTypes = {}
+Header.propTypes = {};
 
-export default Header
+export default Header;

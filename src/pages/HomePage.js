@@ -1,9 +1,12 @@
 import React from "react";
+import { FormattedMessage } from "react-intl";
 
 const Home = () => {
   return (
     <div>
-      <h2>Welcome to React Real World Demo!</h2>
+      <h2>
+        <FormattedMessage id="home.title" />
+      </h2>
       <p>A React application to highlight</p>
       <ul>
         <li>Data fetching</li>

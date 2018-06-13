@@ -8,6 +8,6 @@ const PlayerListContainer = ({ dependencies }) => {
   return <FetchPlayers api={api}>{PlayerListPage}</FetchPlayers>;
 };
 
-PlayerListContainer.propTypes = { api: PropTypes.object.isRequired };
+PlayerListContainer.propTypes = { dependencies: PropTypes.object.isRequired };
 
 export default PlayerListContainer;

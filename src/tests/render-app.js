@@ -1,4 +1,5 @@
 import React from "react";
+import { IntlProvider } from "react-intl";
 
 import renderWithContext from "./render-with-context";
 import createApi from "../api/players-api";
@@ -10,9 +11,14 @@ export default function renderApp({ route }) {
     api
   };
   return {
-    ...renderWithContext(<App dependencies={dependencies} />, {
-      route
-    }),
+    ...renderWithContext(
+      <IntlProvider locale="en">
+        <App dependencies={dependencies} />
+      </IntlProvider>,
+      {
+        route
+      }
+    ),
     api
   };
 }

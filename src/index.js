@@ -1,8 +1,10 @@
 import React from "react";
 import { render } from "react-dom";
 import { BrowserRouter as Router } from "react-router-dom";
-import createApi from "./api/players-api";
+import { IntlProvider } from "react-intl";
+import messages from "./i18n/en";
 
+import createApi from "./api/players-api";
 import App from "./App";
 
 const dependencies = {
@@ -11,8 +13,10 @@ const dependencies = {
 };
 
 render(
-  <Router>
-    <App dependencies={dependencies} />
-  </Router>,
+  <IntlProvider locale="en" messages={messages}>
+    <Router>
+      <App dependencies={dependencies} />
+    </Router>
+  </IntlProvider>,
   document.getElementById("root")
 );
