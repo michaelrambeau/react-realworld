@@ -1,11 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { FormattedMessage } from "react-intl";
 
 const Menu = () => {
   return (
     <div className="menu">
       <Link className="menu-item" to="/">
-        Home
+        <FormattedMessage id="layout.menu.home" />
       </Link>
       <Link className="menu-item" to="/players">
         All Players
