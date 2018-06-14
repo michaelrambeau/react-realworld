@@ -6,11 +6,8 @@ import __intlEN from "react-intl/locale-data/en";
 import __intlZH from "react-intl/locale-data/zh";
 import __intlJA from "react-intl/locale-data/ja";
 
-import allMessages from "./i18n";
-import { flatten } from "./i18n/i18n-utils";
-
 import createApi from "./api/players-api";
-import App from "./App";
+import AppWithIntl from "./AppWithIntl";
 
 addLocaleData(__intlEN);
 addLocaleData(__intlZH);
@@ -21,14 +18,8 @@ const dependencies = {
   api: createApi({ immediate: false })
 };
 
-const locale = "zh";
-const messages = flatten(allMessages[locale]);
-
+const locale = "en";
 render(
-  <IntlProvider locale={locale} messages={messages}>
-    <Router>
-      <App dependencies={dependencies} />
-    </Router>
-  </IntlProvider>,
+  <AppWithIntl locale={locale} dependencies={dependencies} />,
   document.getElementById("root")
 );
