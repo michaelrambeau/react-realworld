@@ -7,7 +7,7 @@ import __intlZH from "react-intl/locale-data/zh";
 import __intlJA from "react-intl/locale-data/ja";
 
 import createApi from "./api/players-api";
-import AppWithIntl from "./AppWithIntl";
+import App from "./App";
 
 addLocaleData(__intlEN);
 addLocaleData(__intlZH);
@@ -18,8 +18,10 @@ const dependencies = {
   api: createApi({ immediate: false })
 };
 
-const locale = "en";
+// const locale = "en";
 render(
-  <AppWithIntl locale={locale} dependencies={dependencies} />,
+  <Router>
+    <App dependencies={dependencies} />
+  </Router>,
   document.getElementById("root")
 );
