@@ -5,30 +5,28 @@ import {
   Simulate
 } from "react-testing-library";
 
-import renderApp from "./render-app";
-import createApi from "../api/players-api";
+import renderApp from "./utils/render-app";
+// import createApi from "../api/players-api";
 
-it("should addd a new player", async () => {
-  const api = createApi();
-  const count = await api.count();
-  const { debug, container, getByLabelText, getByText } = renderApp({
+it("should add a new player", async () => {
+  // const api = createApi();
+  // const count = await api.count();
+  const { container, getByLabelText, getByText, intl } = renderApp({
     route: "/add"
   });
-  await wait(() => getByText("Add a player"));
+  await wait(() => getByText("Add a new player"));
   const form = container.querySelector("form");
   // Enter name and team fields
-  // const inputName = geLabelTextelName:.name");
-  const inputName = getByTestId("player_name_field");
+  const inputName = getByLabelText(
+    intl.formatMessage({ id: "fields.player.name" })
+  );
   inputName.value = "Kobe";
-  Simulate.change(inputName, "Kobe");
-  const inputTeam = getByLabelText("Team:");
-  Simulate.change(inputTeam, "Lakers");
-  // Submit the form => redirect to the Player List page
-  Simulate.submit(form);
-});
-  Simulate.change(inputName, "Kobe");
-  const inputTeam = getByLabelText("Team:");
-  Simulate.change(inputTeam, "Lakers");
+  Simulate.change(inputName);
+  const inputTeam = getByLabelText(
+    intl.formatMessage({ id: "fields.player.team" })
+  );
+  inputName.value = "Lakers";
+  Simulate.change(inputTeam);
   // Submit the form => redirect to the Player List page
   Simulate.submit(form);
 });

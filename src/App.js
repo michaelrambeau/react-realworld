@@ -5,18 +5,20 @@ import Routes from "./Routes";
 import Header from "./components/Header";
 import "./App.css";
 
-const App = ({ dependencies }) => (
-  <div className="container">
-    <Header />
-    <div id="layout">
-      <aside id="sidebar">
-        <Menu />
-      </aside>
-      <main id="main">
-        <Routes dependencies={dependencies} />
-      </main>
+const App = ({ dependencies }) => {
+  return (
+    <div className="container">
+      <Header />
+      <div id="layout">
+        <aside id="sidebar">
+          <Menu />
+        </aside>
+        <main id="main">
+          <Routes dependencies={dependencies} />
+        </main>
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 export default App;

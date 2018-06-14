@@ -1,6 +1,6 @@
 import { waitForElement, wait } from "react-testing-library";
 
-import renderApp from "./render-app";
+import renderApp from "./utils/render-app";
 
 it("Should render the player list with 3 players", async () => {
   const { getByText, container, api } = renderApp({ route: "/players" });

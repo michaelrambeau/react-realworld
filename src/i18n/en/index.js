@@ -1,9 +1,11 @@
 import layout from "./layout.json";
 import home from "./home.json";
+import fields from "./fields.json";
 
 const nestedMessages = {
   layout,
-  home
+  home,
+  fields
 };
 
 function flatten(nestedMessages, prefix = "") {

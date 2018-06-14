@@ -1,4 +1,6 @@
 import React from "react";
+import { FormattedMessage } from "react-intl";
+
 import Alert from "./Alert";
 
 const PlayerForm = ({
@@ -17,7 +19,9 @@ const PlayerForm = ({
           : "This is the form to EDIT an existing player"}
       </p>
       <fieldset className="form-group">
-        <label htmlFor="name">Name:</label>
+        <label htmlFor="name">
+          <FormattedMessage id={"fields.player.name"} />
+        </label>
         <input
           name="name"
           id="name"
@@ -27,7 +31,9 @@ const PlayerForm = ({
           required
           className="form-control"
         />
-        <label htmlFor="team">Team:</label>
+        <label htmlFor="team">
+          <FormattedMessage id={"fields.player.team"} />
+        </label>
         <input
           name="team"
           id="team"
