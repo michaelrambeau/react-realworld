@@ -5,6 +5,7 @@ import { withProps } from "recompose";
 
 import FetchPlayerDetails from "../../containers/FetchPlayerDetails";
 import EditPlayerPage from "./EditPlayerPage";
+import Page from "../../templates/Page";
 
 const EditPlayerContainer = ({ dependencies, history, match }) => {
   const { id } = match.params;
@@ -19,9 +20,11 @@ const EditPlayerContainer = ({ dependencies, history, match }) => {
     }
   };
   return (
-    <FetchPlayerDetails id={id} api={api}>
-      {withProps({ onSubmit })(EditPlayerPage)}
-    </FetchPlayerDetails>
+    <Page>
+      <FetchPlayerDetails id={id} api={api}>
+        {withProps({ onSubmit })(EditPlayerPage)}
+      </FetchPlayerDetails>
+    </Page>
   );
 };
 

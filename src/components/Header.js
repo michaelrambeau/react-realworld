@@ -1,8 +1,10 @@
 import React from "react";
 // import PropTypes from "prop-types";
 import { FormattedMessage } from "react-intl";
+import { withRouter } from "react-router-dom";
 
 const Header = props => {
+  console.log("Header", props);
   return (
     <header>
       <h1>
@@ -14,4 +16,4 @@ const Header = props => {
 
 // Header.propTypes = {};
 
-export default Header;
+export default withRouter(Header);

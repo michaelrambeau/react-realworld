@@ -1,5 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
+
+import Page from "../../templates/Page";
 import PlayerList from "../../components/PlayerList";
 import Loading from "../../components/Loading";
 import Alert from "../../components/Alert";
@@ -12,10 +14,10 @@ const List = ({ loading, error, players }) => {
 
 const PlayerListPage = props => {
   return (
-    <div>
+    <Page>
       <h2>Player List</h2>
       <List {...props} />
-    </div>
+    </Page>
   );
 };
 

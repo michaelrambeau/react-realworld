@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import PropTypes from "prop-types";
 import { Formik } from "formik";
 import { withProps } from "recompose";
@@ -13,12 +13,12 @@ const EditPlayerPage = ({ player, loading, error, onSubmit }) => {
   if (loading) return <Loading />;
   if (error) return <Alert>{error.message}</Alert>;
   return (
-    <div>
+    <Fragment>
       <h2>Edit {player.name}</h2>
       <Formik onSubmit={onSubmit} initialValues={player}>
         {EditPlayerForm}
       </Formik>
-    </div>
+    </Fragment>
   );
 };
 

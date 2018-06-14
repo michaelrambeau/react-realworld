@@ -9,7 +9,7 @@ import EditPlayerPage from "./pages/EditPlayer/EditPlayerContainer";
 import { withProps, compose } from "recompose";
 
 const Routes = ({ dependencies }) => {
-  const enhance = compose(withProps({ dependencies }), injectIntl);
+  const enhance = compose(withProps({ dependencies }));
   return (
     <Fragment>
       <Route exact path="/" component={enhance(HomePage)} />

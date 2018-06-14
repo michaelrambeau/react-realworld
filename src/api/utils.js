@@ -5,7 +5,7 @@ export function randomDelay(value, delay) {
   const lucky = Math.random() > errorRatio;
   return lucky
     ? delaySuccess(value, delay)
-    : delayError("Unexpected Error from the API", delay);
+    : delayError("Random Error from the API, try again!", delay);
 }
 export function delaySuccess(value, delay = 500) {
   return new Promise(function(resolve) {
