@@ -4,7 +4,6 @@ import { FormattedMessage } from "react-intl";
 import { withRouter } from "react-router-dom";
 
 const Header = props => {
-  console.log("Header", props);
   return (
     <header>
       <h1>

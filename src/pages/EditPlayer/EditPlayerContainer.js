@@ -8,12 +8,12 @@ import EditPlayerPage from "./EditPlayerPage";
 import Page from "../../templates/Page";
 
 const EditPlayerContainer = ({ dependencies, history, match }) => {
-  const { id } = match.params;
+  const { id, language } = match.params;
   const { api } = dependencies;
   const onSubmit = async (values, { setSubmitting, setErrors }) => {
     try {
       await api.edit(values);
-      history.push("/players");
+      history.push(`/${language}/players`);
     } catch (error) {
       setSubmitting(false);
       setErrors({ general: error.message });

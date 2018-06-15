@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const PlayerList = ({ players }) => {
+const PlayerList = ({ players, locale = "en" }) => {
   return (
     <table>
       <thead>
@@ -13,19 +13,19 @@ const PlayerList = ({ players }) => {
       </thead>
       <tbody>
         {players.map(player => (
-          <PlayerList.Row key={player.id} player={player} />
+          <PlayerList.Row key={player.id} player={player} locale={locale} />
         ))}
       </tbody>
     </table>
   );
 };
 
-PlayerList.Row = ({ player }) => {
+PlayerList.Row = ({ player, locale }) => {
   return (
     <tr>
       <td>{player.id}</td>
       <td>
-        <Link to={`/players/${player.id}`}>{player.name}</Link>
+        <Link to={`/${locale}/players/${player.id}`}>{player.name}</Link>
       </td>
       <td>{player.team}</td>
     </tr>

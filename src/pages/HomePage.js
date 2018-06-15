@@ -10,15 +10,7 @@ const Home = () => {
         <h2>
           <FormattedMessage id="home.title" />
         </h2>
-        <p>A React application to highlight</p>
-        <ul>
-          <li>Data fetching</li>
-          <li>API dependency injection</li>
-          <li>Form Handling</li>
-          <li>Routing</li>
-          <li>i18n</li>
-          <li>...</li>
-        </ul>
+        <p>Check the routes and switch the language!</p>
       </div>
     </Page>
   );

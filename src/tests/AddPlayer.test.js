@@ -12,7 +12,7 @@ it("should add a new player", async () => {
   // const api = createApi();
   // const count = await api.count();
   const { container, getByLabelText, getByText, intl } = renderApp({
-    route: "/add"
+    route: "/en/add"
   });
   await wait(() => getByText("Add a new player"));
   const form = container.querySelector("form");

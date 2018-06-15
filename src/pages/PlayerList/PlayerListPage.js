@@ -6,10 +6,10 @@ import PlayerList from "../../components/PlayerList";
 import Loading from "../../components/Loading";
 import Alert from "../../components/Alert";
 
-const List = ({ loading, error, players }) => {
+const List = ({ loading, error, players, locale }) => {
   if (loading) return <Loading />;
   if (error) return <Alert>{error.message}</Alert>;
-  return <PlayerList players={players} />;
+  return <PlayerList players={players} locale={locale} />;
 };
 
 const PlayerListPage = props => {
@@ -23,8 +23,9 @@ const PlayerListPage = props => {
 
 PlayerListPage.propTypes = {
   player: PropTypes.object,
-  loading: PropTypes.boolean,
-  error: PropTypes.object
+  loading: PropTypes.bool,
+  error: PropTypes.object,
+  locale: PropTypes.string.isRequired
 };
 
 export default PlayerListPage;

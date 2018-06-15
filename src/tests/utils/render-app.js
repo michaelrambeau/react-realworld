@@ -16,14 +16,9 @@ export default function renderApp({ route, locale = "en" }) {
   const intlProvider = new IntlProvider({ locale, messages }, {});
   const { intl } = intlProvider.getChildContext();
   return {
-    ...renderWithContext(
-      <IntlProvider locale={locale} messages={messages}>
-        <App dependencies={dependencies} intl={intl} />
-      </IntlProvider>,
-      {
-        route
-      }
-    ),
+    ...renderWithContext(<App dependencies={dependencies} intl={intl} />, {
+      route
+    }),
     api,
     intl // we make the `intl` object available when calling renderApp()
   };

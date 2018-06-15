@@ -4,6 +4,7 @@
  * will return {'form.player.name': 'My label'}
  */
 export function flatten(nestedMessages, prefix = "") {
+  if (!nestedMessages) return {};
   return Object.keys(nestedMessages).reduce((messages, key) => {
     let value = nestedMessages[key];
     let prefixedKey = prefix ? `${prefix}.${key}` : key;

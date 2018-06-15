@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import { Route, Redirect } from "react-router-dom";
+import { Switch, Route, Redirect } from "react-router-dom";
 import { injectIntl } from "react-intl";
 
 import HomePage from "./pages/HomePage";
@@ -13,7 +13,7 @@ import { withProps, compose } from "recompose";
 const Routes = ({ dependencies }) => {
   const enhance = compose(withProps({ dependencies }));
   return (
-    <Fragment>
+    <Switch>
       <Route exact path="/:language/" component={enhance(HomePage)} />
       <Route
         exact
@@ -26,7 +26,8 @@ const Routes = ({ dependencies }) => {
         path="/:language/players/:id"
         component={enhance(EditPlayerPage)}
       />
-    </Fragment>
+      <Redirect exact from="/" to="/ja/" />
+    </Switch>
   );
 };
 

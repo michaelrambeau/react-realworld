@@ -1,13 +1,22 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { withRouter } from "react-router-dom";
+import { withProps } from "recompose";
+
 import FetchPlayers from "../../containers/FetchPlayers";
 import PlayerListPage from "./PlayerListPage";
 
-const PlayerListContainer = ({ dependencies }) => {
+const PlayerListContainer = ({ dependencies, match }) => {
   const { api } = dependencies;
-  return <FetchPlayers api={api}>{PlayerListPage}</FetchPlayers>;
+  const { language } = match.params;
+  const locale = language || "en";
+  return (
+    <FetchPlayers api={api}>
+      {withProps({ locale })(PlayerListPage)}
+    </FetchPlayers>
+  );
 };
 
 PlayerListContainer.propTypes = { dependencies: PropTypes.object.isRequired };
 
-export default PlayerListContainer;
+export default withRouter(PlayerListContainer);
