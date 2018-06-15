@@ -3,9 +3,9 @@ import { FormattedMessage } from "react-intl";
 
 import Page from "../templates/Page";
 
-const Home = () => {
+const Home = props => {
   return (
-    <Page>
+    <Page {...props}>
       <div>
         <h2>
           <FormattedMessage id="home.title" />

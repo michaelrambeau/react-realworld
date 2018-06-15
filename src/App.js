@@ -1,12 +1,22 @@
 import React from "react";
 
-import Menu from "./components/Menu";
 import Routes from "./Routes";
-import Header from "./components/Header";
+import AuthContainer from "./containers/Auth";
+import Loading from "./components/Loading";
 import "./App.css";
 
 const App = ({ dependencies }) => {
-  return <Routes dependencies={dependencies} />;
+  return (
+    <AuthContainer api={dependencies.authApi}>
+      {({ auth }) => {
+        return auth.pending ? (
+          <Loading />
+        ) : (
+          <Routes dependencies={dependencies} auth={auth} />
+        );
+      }}
+    </AuthContainer>
+  );
 };
 
 export default App;

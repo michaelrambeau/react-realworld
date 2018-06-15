@@ -7,7 +7,7 @@ import FetchPlayerDetails from "../../containers/FetchPlayerDetails";
 import EditPlayerPage from "./EditPlayerPage";
 import Page from "../../templates/Page";
 
-const EditPlayerContainer = ({ dependencies, history, match }) => {
+const EditPlayerContainer = ({ dependencies, history, match, ...props }) => {
   const { id, language } = match.params;
   const { api } = dependencies;
   const onSubmit = async (values, { setSubmitting, setErrors }) => {
@@ -20,7 +20,7 @@ const EditPlayerContainer = ({ dependencies, history, match }) => {
     }
   };
   return (
-    <Page>
+    <Page {...props}>
       <FetchPlayerDetails id={id} api={api}>
         {withProps({ onSubmit })(EditPlayerPage)}
       </FetchPlayerDetails>

@@ -7,11 +7,13 @@ import PlayerListPage from "./pages/PlayerList/PlayerListContainer";
 import AddPlayerPage from "./pages/AddPlayer/AddPlayerContainer";
 import EditPlayerPage from "./pages/EditPlayer/EditPlayerContainer";
 import { withProps, compose } from "recompose";
+import PrivateRoute from "./PrivateRoute";
 
 // <Redirect exact from="/" to="/en/" />
 
-const Routes = ({ dependencies }) => {
-  const enhance = compose(withProps({ dependencies }));
+const Routes = props => {
+  const { auth } = props;
+  const enhance = compose(withProps({ ...props }));
   return (
     <Switch>
       <Route exact path="/:language/" component={enhance(HomePage)} />
@@ -20,13 +22,19 @@ const Routes = ({ dependencies }) => {
         path="/:language/players"
         component={enhance(PlayerListPage)}
       />
-      <Route exact path="/:language/add" component={enhance(AddPlayerPage)} />
-      <Route
+      <PrivateRoute
+        exact
+        path="/:language/add"
+        component={enhance(AddPlayerPage)}
+        auth={auth}
+      />
+      <PrivateRoute
         exact
         path="/:language/players/:id"
         component={enhance(EditPlayerPage)}
+        auth={auth}
       />
-      <Redirect exact from="/" to="/ja/" />
+      <Redirect exact from="/" to="/en/" />
     </Switch>
   );
 };

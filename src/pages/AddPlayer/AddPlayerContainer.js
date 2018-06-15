@@ -2,9 +2,10 @@ import React from "react";
 import PropTypes from "prop-types";
 import { withRouter } from "react-router-dom";
 
+import Page from "../../templates/Page";
 import AddPlayerPage from "./AddPlayerPage";
 
-const AddPlayerContainer = ({ dependencies, history, match }) => {
+const AddPlayerContainer = ({ dependencies, history, match, ...props }) => {
   const { api } = dependencies;
   const { language } = match.params;
   const onSubmit = async (values, { props, setSubmitting, setErrors }) => {
@@ -15,7 +16,11 @@ const AddPlayerContainer = ({ dependencies, history, match }) => {
       setErrors({ general: error.message });
     }
   };
-  return <AddPlayerPage onSubmit={onSubmit} />;
+  return (
+    <Page {...props}>
+      <AddPlayerPage onSubmit={onSubmit} />
+    </Page>
+  );
 };
 
 AddPlayerContainer.propTypes = {

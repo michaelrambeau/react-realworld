@@ -3,17 +3,20 @@ import PropTypes from "prop-types";
 import { withRouter } from "react-router-dom";
 import { withProps } from "recompose";
 
+import Page from "../../templates/Page";
 import FetchPlayers from "../../containers/FetchPlayers";
 import PlayerListPage from "./PlayerListPage";
 
-const PlayerListContainer = ({ dependencies, match }) => {
+const PlayerListContainer = ({ dependencies, match, ...props }) => {
   const { api } = dependencies;
   const { language } = match.params;
   const locale = language || "en";
   return (
-    <FetchPlayers api={api}>
-      {withProps({ locale })(PlayerListPage)}
-    </FetchPlayers>
+    <Page {...props}>
+      <FetchPlayers api={api}>
+        {withProps({ locale })(PlayerListPage)}
+      </FetchPlayers>
+    </Page>
   );
 };
 

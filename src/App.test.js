@@ -8,9 +8,11 @@ import { flatten } from "./i18n/i18n-utils";
 
 import App from "./App";
 import createApi from "./api/players-api";
+import createAuthApi from "./api/auth-api";
 
 const dependencies = {
-  api: createApi({ immediate: false })
+  api: createApi({ immediate: false }),
+  authApi: createAuthApi()
 };
 
 it("renders without crashing", () => {

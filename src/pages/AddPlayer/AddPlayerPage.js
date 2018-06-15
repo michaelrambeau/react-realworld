@@ -1,8 +1,7 @@
-import React from "react";
+import React, { Fragment } from "react";
 import PropTypes from "prop-types";
 import { Formik } from "formik";
 import { withProps } from "recompose";
-import Page from "../../templates/Page";
 
 import PlayerForm from "../../components/PlayerForm";
 
@@ -13,14 +12,14 @@ const initialValues = {
   team: ""
 };
 
-const AddPlayerPage = ({ onSubmit }) => {
+const AddPlayerPage = ({ onSubmit, ...props }) => {
   return (
-    <Page>
+    <Fragment>
       <h2>Add a new player</h2>
       <Formik onSubmit={onSubmit} initialValues={initialValues}>
         {AddPlayerForm}
       </Formik>
-    </Page>
+    </Fragment>
   );
 };
 

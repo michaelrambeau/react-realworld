@@ -4,10 +4,10 @@ import Menu from "../components/Menu";
 import Routes from "../Routes";
 import Header from "../components/Header";
 
-const Layout = ({ children }) => {
+const Layout = ({ children, ...props }) => {
   return (
     <div className="container">
-      <Header />
+      <Header {...props} />
       <div id="layout">
         <aside id="sidebar">
           <Menu />

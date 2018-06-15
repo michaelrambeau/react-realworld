@@ -17,12 +17,13 @@ function getMessages(language) {
 /**
  * `Page` template used to create all application pages, for logged-in users
  */
-const Page = ({ children, match }) => {
+const Page = props => {
+  const { children, match, auth } = props;
   const { language } = match.params;
   const { messages, locale } = getMessages(language);
   return (
     <IntlProvider locale={locale} messages={messages}>
-      <Layout>{children}</Layout>
+      <Layout {...props}>{children}</Layout>
     </IntlProvider>
   );
 };

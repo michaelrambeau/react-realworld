@@ -1,7 +1,6 @@
-import React from "react";
+import React, {Fragment} from "react";
 import PropTypes from "prop-types";
 
-import Page from "../../templates/Page";
 import PlayerList from "../../components/PlayerList";
 import Loading from "../../components/Loading";
 import Alert from "../../components/Alert";
@@ -14,10 +13,10 @@ const List = ({ loading, error, players, locale }) => {
 
 const PlayerListPage = props => {
   return (
-    <Page>
+    <Fragment>
       <h2>Player List</h2>
       <List {...props} />
-    </Page>
+    </Fragment>
   );
 };
 
