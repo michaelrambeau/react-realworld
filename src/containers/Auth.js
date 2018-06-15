@@ -1,6 +1,6 @@
 import { Component } from "react";
 import { withRouter } from "react-router-dom";
-import propTypes from "prop-types";
+import PropTypes from "prop-types";
 
 /**
  * Top level container to manage authentication side effects.
@@ -8,6 +8,9 @@ import propTypes from "prop-types";
  * passing down an `auth` object
  */
 class AuthContainer extends Component {
+  static propTypes = {
+    api: PropTypes.object.isRequired
+  };
   api = this.props.api;
   defaultValues = this.api.defaultValues;
   state = {

@@ -1,7 +1,6 @@
 import React from "react";
-import PropTypes from "prop-types";
-import { BrowserRouter as Router, withRouter } from "react-router-dom";
-import { IntlProvider, injectIntl } from "react-intl";
+import { withRouter } from "react-router-dom";
+import { IntlProvider } from "react-intl";
 
 import Layout from "./Layout";
 import allMessages from "../i18n";
@@ -18,7 +17,7 @@ function getMessages(language) {
  * `Page` template used to create all application pages, for logged-in users
  */
 const Page = props => {
-  const { children, match, auth } = props;
+  const { children, match } = props;
   const { language } = match.params;
   const { messages, locale } = getMessages(language);
   return (

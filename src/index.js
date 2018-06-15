@@ -1,7 +1,7 @@
 import React from "react";
 import { render } from "react-dom";
 import { BrowserRouter as Router } from "react-router-dom";
-import { IntlProvider, addLocaleData } from "react-intl";
+import { /*IntlProvider,*/ addLocaleData } from "react-intl";
 import __intlEN from "react-intl/locale-data/en";
 import __intlZH from "react-intl/locale-data/zh";
 import __intlJA from "react-intl/locale-data/ja";
@@ -20,7 +20,6 @@ const dependencies = {
   authApi: createAuthApi()
 };
 
-// const locale = "en";
 render(
   <Router>
     <App dependencies={dependencies} />

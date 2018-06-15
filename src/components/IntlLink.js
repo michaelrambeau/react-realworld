@@ -1,6 +1,5 @@
 import React from "react";
-import PropTypes from "prop-types";
-import { Link, withRouter } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const IntlLink = ({ children, to, locale = "en", ...props }) => {
   const fullPath = `/${locale}${to}`;
@@ -10,7 +9,5 @@ const IntlLink = ({ children, to, locale = "en", ...props }) => {
     </Link>
   );
 };
-
-IntlLink.propTypes = {};
 
 export default IntlLink;

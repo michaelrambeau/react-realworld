@@ -1,7 +1,6 @@
 import React from "react";
 
 import Menu from "../components/Menu";
-import Routes from "../Routes";
 import Header from "../components/Header";
 
 const Layout = ({ children, ...props }) => {

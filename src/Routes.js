@@ -1,6 +1,6 @@
-import React, { Fragment } from "react";
+import React from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
-import { injectIntl } from "react-intl";
+// import { injectIntl } from "react-intl";
 
 import HomePage from "./pages/HomePage";
 import PlayerListPage from "./pages/PlayerList/PlayerListContainer";
@@ -8,8 +8,6 @@ import AddPlayerPage from "./pages/AddPlayer/AddPlayerContainer";
 import EditPlayerPage from "./pages/EditPlayer/EditPlayerContainer";
 import { withProps, compose } from "recompose";
 import PrivateRoute from "./PrivateRoute";
-
-// <Redirect exact from="/" to="/en/" />
 
 const Routes = props => {
   const { auth } = props;
