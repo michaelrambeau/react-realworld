@@ -1,0 +1,12 @@
+[
+  {
+    "username": "mike",
+    "fullName": "Michael Jordan",
+    "team": "Bulls"
+  },
+  {
+    "username": "kevin",
+    "fullName": "Kevin Durant",
+    "team": "Warriors"
+  }
+]

@@ -7,12 +7,12 @@ import messages from "./i18n/en";
 import { flatten } from "./i18n/i18n-utils";
 
 import App from "./App";
-import createApi from "./api/players-api";
-import createAuthApi from "./api/auth-api";
+import createPlayersApi from "./api/players/players-api";
+import createAuthApi from "./api/auth/auth-api";
 
 const dependencies = {
-  api: createApi({ immediate: false }),
-  authApi: createAuthApi()
+  api: createPlayersApi({ immediate: true }),
+  authApi: createAuthApi({ delay: 0 })
 };
 
 it("renders without crashing", () => {

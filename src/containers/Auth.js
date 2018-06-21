@@ -26,9 +26,9 @@ class AuthContainer extends Component {
   logoutSuccess = () => {
     this.setState({ isAuthenticated: false, pending: false });
   };
-  login = async () => {
+  login = async values => {
     this.setState(state => ({ ...state, pending: true }));
-    await this.api.login();
+    await this.api.login(values);
     this.loginSuccess();
   };
   loginSuccess = () => {

@@ -28,7 +28,7 @@ const AnonymousUserBlock = ({ auth }) => {
   return (
     <div>
       <button
-        onClick={auth.login}
+        onClick={() => auth.login({ username: "mike" })}
         className="btn btn-default btn-ghost"
         type="button"
       >
