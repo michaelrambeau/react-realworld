@@ -1,0 +1,20 @@
+---
+name: Alert
+routeXXX: /
+---
+
+import { Playground, PropsTable } from 'docz'
+import Alert from './Alert'
+
+# Alert
+
+<PropsTable of={Alert} />
+
+## Basic usage
+
+<Playground>
+  <Alert isInfo>My info message</Alert>
+  <Alert isWarning>My warning message</Alert>
+  <Alert isError>My error message</Alert>
+  <Alert isSuccess>My success message</Alert>
+</Playground>

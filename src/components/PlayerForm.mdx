@@ -1,0 +1,19 @@
+---
+name: PlayerForm
+---
+
+import { Playground, PropsTable } from 'docz'
+import PlayerForm from './PlayerForm'
+
+## Stateless form example
+
+<Playground>
+  <PlayerForm
+    isNewPlayer={false}
+    values={{name: 'Kevin Durant'}}
+    handleSubmit={console.log}
+    handleChange={console.log}
+    isSubmitting={false}
+    errors={{}}
+  />
+</Playground>
