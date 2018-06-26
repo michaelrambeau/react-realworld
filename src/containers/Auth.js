@@ -1,22 +1,35 @@
+// @flow
 import { Component } from "react";
 import { withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
+import type { User, AuthAPI } from "../api/auth/auth-types";
+
+type Props = {
+  api: AuthAPI,
+  children: any
+}
+type State = {
+  pending: boolean,
+  isAuthenticated: boolean,
+  failure: boolean,
+  user: ?User
+}
 
 /**
  * Top level container to manage authentication side effects.
  * `Render prop` pattern: this container calls its child function,
  * passing down an `auth` object
  */
-class AuthContainer extends Component {
+class AuthContainer extends Component<Props, State> {
   static propTypes = {
     api: PropTypes.object.isRequired
   };
   api = this.props.api;
-  defaultValues = this.api.defaultValues;
   state = {
     pending: true,
     isAuthenticated: false,
-    ...this.defaultValues
+    failure: false,
+    user: null
   };
   logout = async () => {
     this.setState(state => ({ ...state, pending: true }));
@@ -24,20 +37,23 @@ class AuthContainer extends Component {
     this.logoutSuccess();
   };
   logoutSuccess = () => {
-    this.setState({ isAuthenticated: false, pending: false });
+    this.setState(state => ({ isAuthenticated: false, pending: false }));
   };
   login = async values => {
     this.setState(state => ({ ...state, pending: true }));
-    await this.api.login(values);
-    this.loginSuccess();
+    const {user} = await this.api.login(values);
+    return user ? this.loginSuccess(user) : this.loginFailure();
   };
-  loginSuccess = () => {
-    this.setState({ isAuthenticated: true, pending: false });
+  loginSuccess = (user) => {
+    this.setState({ isAuthenticated: true, pending: false, user });
+  };
+  loginFailure = () => {
+    this.setState({ failure: true, pending: false });
   };
   async componentDidMount() {
     this.setState({ pending: true });
-    const isAuthenticated = await this.api.checkIsAuthenticated();
-    this.setState({ pending: false, isAuthenticated });
+    const {user, isAuthenticated} = await this.api.checkIsAuthenticated();
+    this.setState({ pending: false, user, isAuthenticated });
   }
   render() {
     const auth = {

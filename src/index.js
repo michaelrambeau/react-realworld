@@ -17,7 +17,7 @@ addLocaleData(__intlJA);
 const dependencies = {
   // immediate false means all API calls are delayed, to simulate the latency
   api: createPlayersApi({ immediate: false }),
-  authApi: createAuthApi()
+  authApi: createAuthApi({ delay: 1000})
 };
 
 render(

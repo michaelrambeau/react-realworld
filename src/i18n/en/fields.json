@@ -1,6 +1,7 @@
 {
   "player": {
     "name": "Name:",
-    "team": "Team:"
+    "team": "Team:",
+    "number": "Number:"
   }
 }

@@ -6,6 +6,7 @@
   "main": "src/index.js",
   "dependencies": {
     "classnames": "^2.2.6",
+    "flow-bin": "^0.75.0",
     "formik": "latest",
     "react": "16.3.2",
     "react-dom": "16.3.2",
@@ -14,14 +15,15 @@
     "react-router-dom": "latest",
     "react-scripts": "2.0.0-next.3e165448",
     "react-testing-library": "3.1.3",
-    "recompose": "^0.27.1"
+    "recompose": "^0.27.1",
+    "yup": "^0.25.1"
   },
   "devDependencies": {},
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "flow": "flow"
   },
   "browserslist": {
     "development": [
