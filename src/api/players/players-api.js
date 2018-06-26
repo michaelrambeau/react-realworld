@@ -4,14 +4,14 @@
 import data from "./players.json";
 import { randomDelay /*delayError*/ } from "../utils";
 
-const createApi = ({ immediate = true } = {}) => {
+const createApi = ({ delay } = {}) => {
   // it's the first time I use `let`, usually it's bad!
   let players = data.slice();
   const findById = id => {
     const number = parseInt(id, 10);
     return players.find(player => player.id === number);
   };
-  const send = immediate ? Promise.resolve.bind(Promise) : randomDelay;
+  const send = data => randomDelay(data, delay)
   return {
     add(player) {
       // Caution: it's not good to use `push` method because it mutates array!
