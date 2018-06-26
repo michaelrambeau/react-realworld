@@ -11,7 +11,7 @@ const AddPlayerContainer = ({ dependencies, history, match, ...props }) => {
   const onSubmit = async (values, { props, setSubmitting, setErrors }) => {
     try {
       await api.add(values);
-      history.push(`/${language}/players"`);
+      history.push(`/${language}/players`);
     } catch (error) {
       setErrors({ general: error.message });
     }
