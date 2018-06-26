@@ -2,18 +2,25 @@
 import { Component } from "react";
 import { withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
-import type { User, AuthAPI } from "../api/auth/auth-types";
+import type { User, AuthAPI, LoginForm } from "../api/auth/auth-types";
 
 type Props = {
   api: AuthAPI,
-  children: any
-}
+  children: (values: {
+    pending: boolean,
+    isAuthenticated: boolean,
+    failure: boolean,
+    user: ?User,
+    login: (LoginForm) => any,
+    logout: () => any
+  }) => void
+};
 type State = {
   pending: boolean,
   isAuthenticated: boolean,
   failure: boolean,
   user: ?User
-}
+};
 
 /**
  * Top level container to manage authentication side effects.
@@ -41,10 +48,10 @@ class AuthContainer extends Component<Props, State> {
   };
   login = async values => {
     this.setState(state => ({ ...state, pending: true }));
-    const {user} = await this.api.login(values);
+    const { user } = await this.api.login(values);
     return user ? this.loginSuccess(user) : this.loginFailure();
   };
-  loginSuccess = (user) => {
+  loginSuccess = user => {
     this.setState({ isAuthenticated: true, pending: false, user });
   };
   loginFailure = () => {
@@ -52,7 +59,7 @@ class AuthContainer extends Component<Props, State> {
   };
   async componentDidMount() {
     this.setState({ pending: true });
-    const {user, isAuthenticated} = await this.api.checkIsAuthenticated();
+    const { user, isAuthenticated } = await this.api.checkIsAuthenticated();
     this.setState({ pending: false, user, isAuthenticated });
   }
   render() {
@@ -61,7 +68,7 @@ class AuthContainer extends Component<Props, State> {
       logout: this.logout,
       login: this.login
     };
-    return this.props.children({ auth });
+    return this.props.children(auth);
   }
 }
 

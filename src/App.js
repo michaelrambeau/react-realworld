@@ -1,14 +1,23 @@
+// @flow
 import React from "react";
+import type {AuthAPI} from './api/auth/auth-types'
 
 import Routes from "./Routes";
 import AuthContainer from "./containers/Auth";
 import Loading from "./components/Loading";
 import "./App.css";
 
-const App = ({ dependencies }) => {
+type Props = {
+  dependencies: {
+    authApi: AuthAPI
+  }
+}
+
+const App = (props: Props) => {
+  const {dependencies} = props
   return (
     <AuthContainer api={dependencies.authApi}>
-      {({ auth }) => {
+      {auth => {
         return auth.pending ? (
           <Loading />
         ) : (
