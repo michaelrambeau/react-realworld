@@ -14,9 +14,15 @@ addLocaleData(__intlEN);
 addLocaleData(__intlZH);
 addLocaleData(__intlJA);
 
+const storage = {
+  get: key => window.localStorage.getItem(key),
+  set: (key, value) => window.localStorage.setItem(key, value),
+  delete: (key) => window.localStorage.removeItem(key)
+};
+
 const dependencies = {
   playersApi: createPlayersApi({ delay: 500 }),
-  authApi: createAuthApi({ delay: 1000})
+  authApi: createAuthApi({ delay: 1000, storage })
 };
 
 render(

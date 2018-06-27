@@ -10,10 +10,15 @@ import { flatten } from "../../i18n/i18n-utils";
 
 export default function renderApp({ route, locale = "en" }) {
   const messages = flatten(allMessages[locale]);
-  const api = createPlayersApi();
-  const authApi = createAuthApi({ delay: 0 });
+  const playersApi = createPlayersApi({delay: 0});
+  const storage = {
+    get: key => 'mike',
+    set: (key, value) => null,
+    delete: (key) => null
+  };
+  const authApi = createAuthApi({ delay: 0, storage });
   const dependencies = {
-    api,
+    playersApi,
     authApi
   };
   const intlProvider = new IntlProvider({ locale, messages }, {});
@@ -22,7 +27,7 @@ export default function renderApp({ route, locale = "en" }) {
     ...renderWithContext(<App dependencies={dependencies} intl={intl} />, {
       route
     }),
-    api,
+    playersApi,
     authApi,
     intl // we make the `intl` object available when calling renderApp()
   };

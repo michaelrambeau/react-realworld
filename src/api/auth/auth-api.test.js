@@ -1,6 +1,10 @@
 import createApi from "./auth-api";
-
-const api = createApi({ delay: 0 });
+const storage = {
+  get: key => 'mike',
+  set: (key, value) => null,
+  delete: (key) => null
+};
+const api = createApi({ delay: 0, storage });
 
 test(`It should return user's full name when credentials are valid`, async () => {
   const {isAuthenticated, user} = await api.login({ username: "mike" });

@@ -10,9 +10,15 @@ import App from "./App";
 import createPlayersApi from "./api/players/players-api";
 import createAuthApi from "./api/auth/auth-api";
 
+const storage = {
+  get: key => 'mike',
+  set: (key, value) => null,
+  delete: (key) => null
+};
+
 const dependencies = {
   api: createPlayersApi({ immediate: true }),
-  authApi: createAuthApi({ delay: 0 })
+  authApi: createAuthApi({ delay: 0, storage })
 };
 
 it("renders without crashing", () => {

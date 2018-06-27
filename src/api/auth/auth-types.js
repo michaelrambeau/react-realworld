@@ -18,5 +18,10 @@ export type AuthAPI = {
   login(LoginForm): Promise<LoginResponse>,
   logout(): Promise<boolean> ,
   checkIsAuthenticated(): Promise<LoginResponse>
+}
 
+export type Storage = {
+  get(string): any,
+  set(string, any): void,
+  delete(string, any): void 
 }
