@@ -6,11 +6,11 @@ import Page from "../../templates/Page";
 import AddPlayerPage from "./AddPlayerPage";
 
 const AddPlayerContainer = ({ dependencies, history, match, ...props }) => {
-  const { api } = dependencies;
+  const { playersApi } = dependencies;
   const { language } = match.params;
   const onSubmit = async (values, { props, setSubmitting, setErrors }) => {
     try {
-      await api.add(values);
+      await playersApi.add(values);
       history.push(`/${language}/players`);
     } catch (error) {
       setErrors({ general: error.message });

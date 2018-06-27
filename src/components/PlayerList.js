@@ -1,7 +1,15 @@
+// @flow
 import React from "react";
 import { Link } from "react-router-dom";
+import type {Player} from '../api/players/players-types'
 
-const PlayerList = ({ players, locale = "en" }) => {
+type Props = {
+  players: Array<Player>,
+  locale: string
+}
+
+const PlayerList = (props: Props) => {
+  const {players, locale = 'en'} = props
   return (
     <table>
       <thead>

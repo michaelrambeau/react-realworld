@@ -1,10 +1,13 @@
+// @flow
 /**
  * API mock
  */
 import data from "./players.json";
 import { randomDelay /*delayError*/ } from "../utils";
+import type {PlayersAPI} from './players-types'
 
-const createApi = ({ delay } = {}) => {
+const createApi = (options: {delay: number}): PlayersAPI => {
+  const { delay } = options
   // it's the first time I use `let`, usually it's bad!
   let players = data.slice();
   const findById = id => {

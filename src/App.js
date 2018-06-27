@@ -1,6 +1,7 @@
 // @flow
 import React from "react";
 import type {AuthAPI} from './api/auth/auth-types'
+import type {PlayersAPI} from './api/players/players-types'
 
 import Routes from "./Routes";
 import AuthContainer from "./containers/Auth";
@@ -9,7 +10,8 @@ import "./App.css";
 
 type Props = {
   dependencies: {
-    authApi: AuthAPI
+    authApi: AuthAPI,
+    playersApi: PlayersAPI
   }
 }
 

@@ -15,7 +15,7 @@ addLocaleData(__intlZH);
 addLocaleData(__intlJA);
 
 const dependencies = {
-  api: createPlayersApi({ delay: 500 }),
+  playersApi: createPlayersApi({ delay: 500 }),
   authApi: createAuthApi({ delay: 1000})
 };
 

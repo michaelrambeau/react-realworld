@@ -1,7 +1,6 @@
 // @flow
 import { Component } from "react";
 import { withRouter } from "react-router-dom";
-import PropTypes from "prop-types";
 import type { User, AuthAPI, LoginForm } from "../api/auth/auth-types";
 
 type Props = {
@@ -11,8 +10,8 @@ type Props = {
     isAuthenticated: boolean,
     failure: boolean,
     user: ?User,
-    login: (LoginForm) => any,
-    logout: () => any
+    login: (LoginForm) => Promise<void>,
+    logout: () => Promise<void>
   }) => void
 };
 type State = {
@@ -28,9 +27,6 @@ type State = {
  * passing down an `auth` object
  */
 class AuthContainer extends Component<Props, State> {
-  static propTypes = {
-    api: PropTypes.object.isRequired
-  };
   api = this.props.api;
   state = {
     pending: true,
@@ -46,9 +42,9 @@ class AuthContainer extends Component<Props, State> {
   logoutSuccess = () => {
     this.setState(state => ({ isAuthenticated: false, pending: false }));
   };
-  login = async values => {
+  login = async formValues => {
     this.setState(state => ({ ...state, pending: true }));
-    const { user } = await this.api.login(values);
+    const { user } = await this.api.login(formValues);
     return user ? this.loginSuccess(user) : this.loginFailure();
   };
   loginSuccess = user => {

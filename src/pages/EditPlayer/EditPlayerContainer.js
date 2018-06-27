@@ -9,10 +9,10 @@ import Page from "../../templates/Page";
 
 const EditPlayerContainer = ({ dependencies, history, match, ...props }) => {
   const { id, language } = match.params;
-  const { api } = dependencies;
+  const { playersApi } = dependencies;
   const onSubmit = async (values, { setSubmitting, setErrors }) => {
     try {
-      await api.edit(values);
+      await playersApi.edit(values);
       history.push(`/${language}/players`);
     } catch (error) {
       setSubmitting(false);
@@ -21,7 +21,7 @@ const EditPlayerContainer = ({ dependencies, history, match, ...props }) => {
   };
   return (
     <Page {...props}>
-      <FetchPlayerDetails id={id} api={api}>
+      <FetchPlayerDetails id={id} api={playersApi}>
         {withProps({ onSubmit })(EditPlayerPage)}
       </FetchPlayerDetails>
     </Page>

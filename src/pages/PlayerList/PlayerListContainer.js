@@ -8,12 +8,12 @@ import FetchPlayers from "../../containers/FetchPlayers";
 import PlayerListPage from "./PlayerListPage";
 
 const PlayerListContainer = ({ dependencies, match, ...props }) => {
-  const { api } = dependencies;
+  const { playersApi } = dependencies;
   const { language } = match.params;
   const locale = language || "en";
   return (
     <Page {...props}>
-      <FetchPlayers api={api}>
+      <FetchPlayers api={playersApi}>
         {withProps({ locale })(PlayerListPage)}
       </FetchPlayers>
     </Page>
