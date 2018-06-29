@@ -1,7 +1,7 @@
 // @flow
 import React from "react";
 import { Link } from "react-router-dom";
-import type {Player} from '../api/players/players-types'
+import type {Player} from '../../api/players/players-types'
 
 type Props = {
   players: Array<Player>,
