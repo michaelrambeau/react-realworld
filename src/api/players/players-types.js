@@ -11,3 +11,4 @@ export type PlayersAPI = {
   findAll(): Promise<Array<Player>>,
   findById(string): Promise<Player>
 };
+≤
