@@ -1,15 +1,15 @@
 // @flow
 import React from "react";
 import { Link } from "react-router-dom";
-import type {Player} from '../../api/players/players-types'
+import type { Player } from "../../api/players/players-types";
 
 type Props = {
   players: Array<Player>,
   locale: string
-}
+};
 
 const PlayerList = (props: Props) => {
-  const {players, locale = 'en'} = props
+  const { players, locale = "en" } = props;
   return (
     <table>
       <thead>
@@ -28,14 +28,17 @@ const PlayerList = (props: Props) => {
   );
 };
 
-PlayerList.Row = ({ player, locale }) => {
+PlayerList.Row = (props: { player: Player, locale: string }) => {
+  const { player, locale } = props;
   return (
     <tr>
       <td>{player.id}</td>
       <td>
-        <Link to={`/${locale}/players/${player.id}`}>{player.name}</Link>
+        <Link to={`/${locale}/players/${player.id}`}>
+          {player.firstName} {player.lastName}
+        </Link>
       </td>
-      <td>{player.team}</td>
+      <td>{player.team.name}</td>
     </tr>
   );
 };

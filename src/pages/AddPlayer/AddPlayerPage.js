@@ -5,14 +5,14 @@ import { withProps } from "recompose";
 
 import PlayerForm from "../../components/PlayerForm";
 
-const AddPlayerForm = withProps({ isNewPlayer: true })(PlayerForm);
-
 const initialValues = {
-  name: "",
-  team: ""
+  firstName: "",
+  lastName: "",
+  team: null
 };
 
-const AddPlayerPage = ({ onSubmit, ...props }) => {
+const AddPlayerPage = ({ onSubmit, teams, ...props }) => {
+  const AddPlayerForm = withProps({ isNewPlayer: true, teams })(PlayerForm);
   return (
     <Fragment>
       <h2>Add a new player</h2>

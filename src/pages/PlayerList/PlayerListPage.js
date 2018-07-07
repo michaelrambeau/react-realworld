@@ -1,14 +1,14 @@
-import React, {Fragment} from "react";
+import React, { Fragment } from "react";
 import PropTypes from "prop-types";
 
 import PlayerList from "../../components/PlayerList";
 import Loading from "../../components/Loading";
 import Alert from "../../components/Alert";
 
-const List = ({ loading, error, players, locale }) => {
+const List = ({ loading, error, data, locale }) => {
   if (loading) return <Loading />;
   if (error) return <Alert>{error.message}</Alert>;
-  return <PlayerList players={players} locale={locale} />;
+  return <PlayerList players={data} locale={locale} />;
 };
 
 const PlayerListPage = props => {

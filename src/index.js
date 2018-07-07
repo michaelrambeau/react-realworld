@@ -6,7 +6,8 @@ import __intlEN from "react-intl/locale-data/en";
 import __intlZH from "react-intl/locale-data/zh";
 import __intlJA from "react-intl/locale-data/ja";
 
-import createPlayersApi from "./api/players/players-api";
+import createPlayersApi from "./api/players/mock/players-api";
+import TeamsApi from "./api/players/mock/teams-api";
 import createAuthApi from "./api/auth/auth-api";
 import App from "./App";
 
@@ -17,11 +18,12 @@ addLocaleData(__intlJA);
 const storage = {
   get: key => window.localStorage.getItem(key),
   set: (key, value) => window.localStorage.setItem(key, value),
-  delete: (key) => window.localStorage.removeItem(key)
+  delete: key => window.localStorage.removeItem(key)
 };
 
 const dependencies = {
-  playersApi: createPlayersApi({ delay: 500 }),
+  playersApi: createPlayersApi({ delay: 200 }),
+  teamsApi: new TeamsApi({ delay: 200 }),
   authApi: createAuthApi({ delay: 1000, storage })
 };
 

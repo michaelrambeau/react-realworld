@@ -1,14 +1,33 @@
 // @flow
-export type Player = {
+export type Team = {
   id: number,
   name: string,
-  team: string
+  simpleName: string,
+  abbreviation: string,
+  location: string
 };
 
-export type PlayersAPI = {
-  add(Player): Promise<Array<Player>>,
-  edit(Player): Promise<Array<Player>>,
-  findAll(): Promise<Array<Player>>,
-  findById(string): Promise<Player>
+export type PlayerFormData = {
+  firstName: string,
+  lastName: string,
+  teamId: number
 };
-≤
+
+export type Player = {
+  id: number,
+  firstName: string,
+  lastName: string,
+  team: Team
+};
+
+export type PlayersApi = {
+  get(string): Promise<{ data: Player }>,
+  find(): Promise<{ data: Array<Player> }>,
+  create(PlayerFormData): Promise<Array<Player>>,
+  update(id: number, PlayerFormData): Promise<Array<Player>>
+};
+
+export type TeamsApi = {
+  get(string): Promise<Team>,
+  find(): Promise<Array<Player>>
+};

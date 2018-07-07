@@ -7,11 +7,10 @@ import Loading from "../../components/Loading";
 import Alert from "../../components/Alert";
 import PlayerForm from "../../components/PlayerForm";
 
-const EditPlayerForm = withProps({ isNewPlayer: false })(PlayerForm);
-
-const EditPlayerPage = ({ player, loading, error, onSubmit }) => {
+const EditPlayerPage = ({ player, teams, loading, error, onSubmit }) => {
   if (loading) return <Loading />;
   if (error) return <Alert>{error.message}</Alert>;
+  const EditPlayerForm = withProps({ isNewPlayer: false, teams })(PlayerForm);
   return (
     <Fragment>
       <h2>Edit {player.name}</h2>

@@ -4,7 +4,7 @@ import { withRouter } from "react-router-dom";
 import { withProps } from "recompose";
 
 import Page from "../../templates/Page";
-import FetchPlayers from "../../containers/FetchPlayers";
+import FetchItemList from "../../containers/FetchItemList";
 import PlayerListPage from "./PlayerListPage";
 
 const PlayerListContainer = ({ dependencies, match, ...props }) => {
@@ -13,9 +13,9 @@ const PlayerListContainer = ({ dependencies, match, ...props }) => {
   const locale = language || "en";
   return (
     <Page {...props}>
-      <FetchPlayers api={playersApi}>
+      <FetchItemList api={playersApi}>
         {withProps({ locale })(PlayerListPage)}
-      </FetchPlayers>
+      </FetchItemList>
     </Page>
   );
 };

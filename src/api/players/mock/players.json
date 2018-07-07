@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "firstName": "Stephen",
+    "lastName": "Curry",
+    "teamId": 1
+  },
+  {
+    "id": 2,
+    "firstName": "Kevin",
+    "lastName": "Durant",
+    "teamId": 1
+  },
+  {
+    "id": 3,
+    "firstName": "LeBron",
+    "lastName": "James",
+    "teamId": 2
+  },
+  {
+    "id": 4,
+    "firstName": "James",
+    "lastName": "Harden",
+    "teamId": 3
+  }
+]

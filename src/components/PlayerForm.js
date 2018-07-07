@@ -1,16 +1,31 @@
+// @flow
 import React from "react";
 import { FormattedMessage } from "react-intl";
 
+import type { Player, Team } from "../api/players/players-types";
 import Alert from "./Alert";
+import TeamPicker from "./TeamPicker";
 
-const PlayerForm = ({
-  isNewPlayer,
-  values,
-  handleSubmit,
-  handleChange,
-  isSubmitting,
-  errors
+const PlayerForm = (props: {
+  isNewPlayer: boolean,
+  teams: Array<Team>,
+  values: Player,
+  handleSubmit: () => void,
+  handleChange: () => void,
+  setFieldValue: (field: string, value: any) => void,
+  isSubmitting: boolean,
+  errors: Object
 }) => {
+  const {
+    teams,
+    isNewPlayer,
+    values,
+    handleSubmit,
+    handleChange,
+    setFieldValue,
+    isSubmitting,
+    errors
+  } = props;
   return (
     <form className="form" onSubmit={handleSubmit}>
       <p>
@@ -19,30 +34,43 @@ const PlayerForm = ({
           : "This is the form to EDIT an existing player"}
       </p>
       <fieldset className="form-group">
-        <label htmlFor="name">
-          <FormattedMessage id={"fields.player.name"} />
+        <label htmlFor="firstName">
+          <FormattedMessage id={"fields.player.firstName"} />
         </label>
         <input
-          name="name"
-          id="name"
+          name="firstName"
+          id="firstName"
           type="text"
           onChange={handleChange}
-          value={values.name}
+          value={values.firstName}
           required
           className="form-control"
         />
+      </fieldset>
+      <fieldset className="form-group">
+        <label htmlFor="lastName">
+          <FormattedMessage id={"fields.player.lastName"} />
+        </label>
+        <input
+          name="lastName"
+          id="lastName"
+          type="text"
+          onChange={handleChange}
+          value={values.lastName}
+          required
+          className="form-control"
+        />
+      </fieldset>
+      <fieldset className="form-group">
         <label htmlFor="team">
           <FormattedMessage id={"fields.player.team"} />
         </label>
-        <input
-          name="team"
-          id="team"
-          type="text"
-          onChange={handleChange}
+        <TeamPicker
+          teams={teams}
+          name={"teamId"}
+          setFieldValue={setFieldValue}
           value={values.team}
           required
-          className="form-control"
-          data-testid="label_name_field"
         />
       </fieldset>
       {errors.general && <Alert>{errors.general}</Alert>}

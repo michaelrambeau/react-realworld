@@ -1,7 +1,7 @@
 // @flow
 import React from "react";
-import type {AuthAPI} from './api/auth/auth-types'
-import type {PlayersAPI} from './api/players/players-types'
+import type { AuthAPI } from "./api/auth/auth-types";
+import type { PlayersApi } from "./api/players/players-types";
 
 import Routes from "./Routes";
 import AuthContainer from "./containers/Auth";
@@ -11,12 +11,12 @@ import "./App.css";
 type Props = {
   dependencies: {
     authApi: AuthAPI,
-    playersApi: PlayersAPI
+    playersApi: PlayersApi
   }
-}
+};
 
 const App = (props: Props) => {
-  const {dependencies} = props
+  const { dependencies } = props;
   return (
     <AuthContainer api={dependencies.authApi}>
       {auth => {

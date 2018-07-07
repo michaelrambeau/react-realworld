@@ -2,7 +2,8 @@ import React from "react";
 import { IntlProvider } from "react-intl";
 
 import renderWithContext from "./render-with-context";
-import createPlayersApi from "../../api/players/players-api";
+import createPlayersApi from "../../api/players/mock/players-api";
+import TeamsApi from "../../api/players/mock/teams-api";
 import createAuthApi from "../../api/auth/auth-api";
 import App from "../../App";
 import allMessages from "../../i18n";
@@ -10,15 +11,17 @@ import { flatten } from "../../i18n/i18n-utils";
 
 export default function renderApp({ route, locale = "en" }) {
   const messages = flatten(allMessages[locale]);
-  const playersApi = createPlayersApi({delay: 0});
+  const playersApi = createPlayersApi({ delay: 0 });
+  const teamsApi = new TeamsApi({ delay: 0 });
   const storage = {
-    get: key => 'mike',
+    get: key => "mike",
     set: (key, value) => null,
-    delete: (key) => null
+    delete: key => null
   };
   const authApi = createAuthApi({ delay: 0, storage });
   const dependencies = {
     playersApi,
+    teamsApi,
     authApi
   };
   const intlProvider = new IntlProvider({ locale, messages }, {});

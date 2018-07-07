@@ -8,6 +8,7 @@
     "classnames": "^2.2.6",
     "formik": "latest",
     "react": "16.3.2",
+    "react-composer": "^5.0.0",
     "react-dom": "16.3.2",
     "react-intl": "2.4.0",
     "react-router": "4.3.1",

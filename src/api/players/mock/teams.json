@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "abbreviation": "GSW",
+    "name": "Golden State Warriors",
+    "simpleName": "Warriors",
+    "location": "Golden State"
+  },
+  {
+    "id": 2,
+    "abbreviation": "CLE",
+    "name": "Cleveland Cavaliers",
+    "simpleName": "Cavaliers",
+    "location": "Cleveland"
+  },
+  {
+    "id": 3,
+    "abbreviation": "HOU",
+    "name": "Houston Rockets",
+    "simpleName": "Rockets",
+    "location": "Houston"
+  }
+]
