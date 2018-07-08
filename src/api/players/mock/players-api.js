@@ -52,8 +52,9 @@ const createApi = (options: { delay: number }): PlayersApi => {
       const data = populate(findById(id));
       return send({ data });
     },
-    find() {
-      const foundPlayers = players.map(populate);
+    find(options?: { skip: number, limit: number }) {
+      const { skip = 0, limit = 2 } = options || {};
+      const foundPlayers = players.slice(skip, skip + limit).map(populate);
       return send({ data: foundPlayers });
     },
     count() {

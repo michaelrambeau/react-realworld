@@ -4,11 +4,38 @@ import PropTypes from "prop-types";
 import PlayerList from "../../components/PlayerList";
 import Loading from "../../components/Loading";
 import Alert from "../../components/Alert";
+import Pagination from "../../containers/Pagination";
 
 const List = ({ loading, error, data, locale }) => {
   if (loading) return <Loading />;
   if (error) return <Alert>{error.message}</Alert>;
-  return <PlayerList players={data} locale={locale} />;
+  return (
+    <Pagination data={data} skip={0} limit={2} total={5}>
+      {({ pages, currentPage }) => (
+        <div>
+          <PlayerList players={data} locale={locale} />
+          <PaginationControls pages={pages} currentPage={currentPage} />
+        </div>
+      )}
+    </Pagination>
+  );
+};
+
+const PaginationControls = props => {
+  const { pages, currentPage } = props;
+  return (
+    <div>
+      {pages.map(page => {
+        return page === currentPage ? (
+          <span>{page}</span>
+        ) : (
+          <button key={page} className="btn">
+            {page}
+          </button>
+        );
+      })}
+    </div>
+  );
 };
 
 const PlayerListPage = props => {

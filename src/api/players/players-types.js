@@ -29,5 +29,5 @@ export type PlayersApi = {
 
 export type TeamsApi = {
   get(string): Promise<Team>,
-  find(): Promise<Array<Player>>
+  find(options?: { skip: number, limit: number }): Promise<Array<Player>>
 };
