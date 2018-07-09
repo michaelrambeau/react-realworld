@@ -19,5 +19,12 @@
     "name": "Houston Rockets",
     "simpleName": "Rockets",
     "location": "Houston"
+  },
+  {
+    "id": 4,
+    "abbreviation": "BOS",
+    "name": "Boston Celtics",
+    "simpleName": "Celtics",
+    "location": "Boston"
   }
 ]

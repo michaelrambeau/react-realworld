@@ -22,7 +22,9 @@ export type Player = {
 
 export type PlayersApi = {
   get(string): Promise<{ data: Player }>,
-  find(): Promise<{ data: Array<Player> }>,
+  find(options?: { skip: number, limit: number }): Promise<{
+    data: Array<Player>
+  }>,
   create(PlayerFormData): Promise<Array<Player>>,
   update(id: number, PlayerFormData): Promise<Array<Player>>
 };

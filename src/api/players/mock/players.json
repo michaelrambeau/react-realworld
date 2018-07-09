@@ -13,14 +13,62 @@
   },
   {
     "id": 3,
+    "firstName": "Draymond",
+    "lastName": "Green",
+    "teamId": 1
+  },
+  {
+    "id": 4,
+    "firstName": "Klay",
+    "lastName": "Thompson",
+    "teamId": 1
+  },
+  {
+    "id": 5,
+    "firstName": "Andre",
+    "lastName": "Iguadola",
+    "teamId": 1
+  },
+  {
+    "id": 6,
     "firstName": "LeBron",
     "lastName": "James",
     "teamId": 2
   },
   {
-    "id": 4,
+    "id": 7,
+    "firstName": "Kevin",
+    "lastName": "Love",
+    "teamId": 2
+  },
+  {
+    "id": 8,
     "firstName": "James",
     "lastName": "Harden",
     "teamId": 3
+  },
+  {
+    "id": 9,
+    "firstName": "Chris",
+    "lastName": "Paul",
+    "teamId": 3
+  },
+  {
+    "id": 10,
+    "firstName": "Al",
+    "lastName": "Horford",
+    "teamId": 4
+  },
+  {
+    "id": 11,
+    "firstName": "Kyrie",
+    "lastName": "Irving",
+    "teamId": 4
+  },
+  {
+    "id": 12,
+    "firstName": "Jason",
+    "lastName": "Tatum",
+    "teamId": 4
   }
 ]

@@ -6,30 +6,50 @@ import type { RestApi } from "../api/types";
 type State = {
   loading: boolean,
   error: ?Object,
-  data: Array<Object>
+  data: Array<Object>,
+  total: number
 };
 type Props = {
   api: RestApi,
+  query?: {
+    skip?: number,
+    limit?: number
+  },
   children: State => React.Node
 };
+
+// Compare 2 search queries and return true if they are the same
+function isSameQuery(prevQuery?: Object, query?: Object) {
+  if (!query || !prevQuery) return true;
+  const fields = Object.keys(query);
+  return fields.every(fieldName => prevQuery[fieldName] === query[fieldName]);
+}
 
 class FetchItemList extends React.Component<Props, State> {
   state = {
     loading: true,
     data: [],
+    total: 0,
     error: null
   };
   fetchItems = async () => {
-    const { api } = this.props;
+    const { api, query } = this.props;
+    const { limit, skip } = query || {};
+    this.setState(state => ({ ...state, loading: true }));
     try {
-      const { data } = await api.find();
-      this.setState({ data, loading: false, error: null });
+      const { data, total } = await api.find({ skip, limit });
+      this.setState({ data, total, loading: false, error: null });
     } catch (error) {
-      this.setState({ data: [], loading: false, error });
+      this.setState({ data: [], total: 0, loading: false, error });
     }
   };
   componentDidMount() {
     this.fetchItems();
+  }
+  componentDidUpdate(prevProps: Props) {
+    if (!isSameQuery(prevProps.query, this.props.query)) {
+      this.fetchItems();
+    }
   }
   render() {
     return this.props.children(this.state);

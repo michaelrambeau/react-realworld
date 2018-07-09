@@ -53,9 +53,12 @@ const createApi = (options: { delay: number }): PlayersApi => {
       return send({ data });
     },
     find(options?: { skip: number, limit: number }) {
-      const { skip = 0, limit = 2 } = options || {};
+      const { skip = 0, limit = 10 } = options || {};
+      const total = players.length;
+      console.log("Slice", skip, skip + limit);
+
       const foundPlayers = players.slice(skip, skip + limit).map(populate);
-      return send({ data: foundPlayers });
+      return send({ data: foundPlayers, total, skip, limit });
     },
     count() {
       return send(players.length);
