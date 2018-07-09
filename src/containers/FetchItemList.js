@@ -19,7 +19,7 @@ type Props = {
 };
 
 // Compare 2 search queries and return true if they are the same
-function isSameQuery(prevQuery?: Object, query?: Object) {
+function isSameQuery(prevQuery: Object, query: Object) {
   if (!query || !prevQuery) return true;
   const fields = Object.keys(query);
   return fields.every(fieldName => prevQuery[fieldName] === query[fieldName]);
@@ -47,7 +47,11 @@ class FetchItemList extends React.Component<Props, State> {
     this.fetchItems();
   }
   componentDidUpdate(prevProps: Props) {
-    if (!isSameQuery(prevProps.query, this.props.query)) {
+    if (
+      this.props.query &&
+      prevProps.query &&
+      !isSameQuery(prevProps.query, this.props.query)
+    ) {
       this.fetchItems();
     }
   }
